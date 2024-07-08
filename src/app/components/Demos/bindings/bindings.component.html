@@ -1,0 +1,42 @@
+<div class="container">
+    <h2>
+        {{title}}
+    </h2>
+
+    <div class="bindings-examples">
+        <h4>Binding One-Way</h4>
+
+        <!-- {{...}} Syntaxe de liaison de la propriété bindingOneWaySimple du composant
+         Il utilise la liaison de données unidirectionnelle ou communément appelée binding one-way -->
+        <p>{{bindingOneWaySimple}}</p>
+
+        <!-- [innerHTML]="..." Syntaxe de liaison de la propriété bindingOneWayAvecHTML du composant
+         Il utilise la liaison de données unidirectionnelle ou communément appelée binding one-way -->
+        <p [innerHTML]="bindingOneWayAvecHTML"></p>
+
+        <h4>Binding Two-Ways</h4>
+
+        <!-- [(ngModel)]="..." Syntaxe de liaison de la propriété bindingTwoWays du composant
+         Il utilise la liaison de données bidirectionnelle ou communément appelée binding two-way. 
+         Ce qui signifie que toute modification faite dans l'input lié au ngModel sera affectée à la propriété liée 
+         et actualisée si binding one-way en plus. -->
+        <input type="text" [(ngModel)]="bindingTwoWays">
+        <p>{{bindingTwoWays}}</p>
+
+        <h4>Binding d'événements</h4>
+        <div class="buttons">
+
+            <!-- (click)="...()" l'event click (équivalent du onclick) va déclencher la méthode associée -->
+            <button (click)="eventBinding()">Cliques sur moi pour activer mon event</button>
+
+            <!-- [class.classname]="propertyname" va permettre d'affecter dynamiquement une class à un élément selon une condition -->
+            <button [class.adaptative-example]="adaptativeClass" (click)="classBinding()">Cliques sur moi pour activer ou désactiver dynamiquement ma class CSS</button>
+        </div>
+
+        <h4>Binding d'attributs</h4>
+        <div class="buttons">
+            <button [disabled]="disabledAttribute" (click)="attributeBinding()">Cliques sur moi pour me désactiver</button>
+        </div>
+    </div>
+</div>
+
