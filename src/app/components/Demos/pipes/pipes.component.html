@@ -1,0 +1,45 @@
+<div class="container">
+    <h2>
+        {{title}}
+    </h2>
+
+    <div class="pipes-examples">
+
+        <h4>Les pipes built-in les plus utilisées</h4>
+
+        <p class="subtitle">En majuscule</p>
+        <p>
+            {{stringEnMajuscule | uppercase}}
+        </p>
+
+        <p>
+            {{'Coucou je ne viens de Typescript et je peux aussi être modifier' | uppercase}}
+        </p>
+
+        <p class="subtitle">En minuscule</p>
+        <p>
+            {{stringEnMinuscule | lowercase}}
+        </p>
+
+        <p class="subtitle">Première lettre de chaque mot en majuscule</p>
+        <p>
+            {{premiereLettreEnMajuscule | titlecase}}
+        </p>
+
+        <p class="subtitle">Formatage des dates au format EU</p>
+        <p>On est le : {{dateDuJour | date: 'short'}}</p>
+        <p>Mais on est aussi le : {{dateDuJour | date: 'medium'}}</p>
+        <p>Et en version longue : {{dateDuJour | date: 'long'}}</p>
+
+        <p class="subtitle">Ajout d'un symbole monétaire</p>
+        <p>Voici le prix : {{argentArgent | currency: 'EUR'}}</p>
+
+        <h4>Exemple de pipe custom</h4>
+        
+        <p class="subtitle">
+            Pipe custom qui prend un chiffre et renvoi un string PUIS passe la première lettre en majuscule
+        </p>
+        <p>{{6 | custom | titlecase}}</p>
+
+    </div>
+</div>
