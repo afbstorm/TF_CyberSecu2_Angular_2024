@@ -3,12 +3,14 @@ import { BindingsComponent } from './components/Demos/bindings/bindings.componen
 import { PipesComponent } from './components/Demos/pipes/pipes.component';
 import { ChronoComponent } from './components/Exos/chrono/chrono.component';
 import { DirectivesComponent } from './components/Demos/directives/directives.component';
+import { ParentComponent } from './components/Demos/inout/parent/parent.component';
 
 export const routes: Routes = [
     {path: 'demos', children: [
         {path: 'bindings', component: BindingsComponent},
         {path: 'pipes', component: PipesComponent},
-        {path: 'directives', component: DirectivesComponent}
+        {path: 'directives', component: DirectivesComponent},
+        {path: 'inout', component: ParentComponent}
     ]},
     {path: 'exos', children: [
         {path: 'chrono', component: ChronoComponent}

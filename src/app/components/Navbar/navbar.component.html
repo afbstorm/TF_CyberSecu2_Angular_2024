@@ -1,4 +1,28 @@
+<!-- Nouvelle version de la navbar faite avec des directives pour plus de dynamisme -->
+
 <nav>
+    <ul class="nav-list">
+        @for (link of links; track link) {
+            <li dynamicNav>
+                <a [routerLink]="link.url">{{link.title}}</a>
+            <ul class="subnav-list">
+                @for (child of link.children; track child) {
+                    <li>
+                        <a [routerLink]="child.url">{{child.title}}</a>
+                    </li>
+                } @empty {
+                    <p>{{null}}</p>
+                }
+            </ul>
+        </li>
+        } 
+    </ul>
+</nav>
+
+
+<!-- Ancienne version de la navbar sans dynamisme, directives, écrite en brut -->
+
+<!-- <nav>
     <ul>
         <li>
             <a routerLink="/demos/bindings">Bindings</a>
@@ -15,4 +39,5 @@
             <a routerLink="/exos/chrono">Chrono</a>
         </li>
     </ul>
-</nav>
+</nav> -->
+

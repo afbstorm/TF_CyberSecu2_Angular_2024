@@ -1,0 +1,26 @@
+<div class="container">
+    <h2>
+        {{title}}
+    </h2>
+
+    <div class="inout-examples">
+        <p class="subtitle">Envoi d'une propriété du parent à l'enfant pour que l'enfant l'affiche</p>
+
+        <app-enfant info="LUC, JE SUIS TON PÈRE"></app-enfant>
+
+
+        <p class="subtitle">
+            Envoi d'un calcul à l'enfant qu'il va se charger de compute et il va également écouter les changements dans les inputs
+        </p>
+
+        <input type="number" [(ngModel)]="num1">
+        +
+        <input type="number" [(ngModel)]="num2">
+
+        <app-enfant [num1]="num1" [num2]="num2" (calculeMoiCa)="calculationResult($event)"></app-enfant>
+
+        <p>{{result}}</p>
+    </div>
+
+
+</div>
