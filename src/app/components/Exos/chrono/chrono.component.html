@@ -1,0 +1,19 @@
+<section>
+    <!-- <h2>
+        {{hours < 10 ? zero + hours : hours}} : 
+        {{minutes < 10 ? zero + minutes : minutes}} : 
+        {{seconds < 10 ? zero + seconds : seconds}}
+    </h2> -->
+
+    <h2>
+        {{hours | number: '2.0'}} : 
+        {{minutes | number: '2.0'}} : 
+        {{seconds | number: '2.0'}}
+    </h2>
+
+    <div>
+        <button [disabled]="startButtonActive" (click)="start()">Start</button>
+        <button (click)="pause()">Pause</button>
+        <button [disabled]="resetButtonActive" (click)="reset()">Reset</button>
+    </div>
+</section>

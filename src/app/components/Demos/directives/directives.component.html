@@ -1,0 +1,77 @@
+<div class="container">
+    <h2>
+        {{title}}
+    </h2>
+
+    <div class="directives-examples">
+        <p class="subtitle">
+            On affiche SI et uniquement SI la condition est respectée via la directive *ngIf
+        </p>
+        <!-- <div *ngIf="showIfTrueNgIf; else elseBlock"> indique que la div (et son contenu) ne sera
+            affiché que si la valeur de showIfTrueNgIf est true. Si showIfTrueNgIf est fale, alors
+            l'élément mentionné avec le else instruction (ici, elseBlock) sera affiché à la place -->
+        <div *ngIf="showIfTrueNgIf; else elseBlock">
+            <p>
+                Je suis visible car la condition est respectée : {{showIfTrueNgIf}}
+            </p>
+            <button (click)="showAndHideInvisibleThings()">Cliques sur moi pour afficher le ELSE</button>
+        </div>
+
+        <!-- <ng-template #elseBlock> la balise <ng-template> est utilisée lorsque l'on souhaite avoir quelque
+            chose dans l'HTML mais que ne voulez pas qu'il soit chargé par défaut. C'est comme un placeholder pour 
+            du contenu dynamique. Ici on l'utilise avec la directive *ngIf -->
+        <ng-template #elseBlock>
+            <p>
+                Je suis visible car la condition n'est PAS respectée : {{showIfTrueNgIf}}
+            </p>
+            <button (click)="showAndHideInvisibleThings()">Cliques sur moi pour afficher le NGIF</button>
+        </ng-template>
+
+        <p class="subtitle">
+            On affiche SI et uniquement SI la condition est respectée via la directive if
+        </p>
+        @if (showIfTrueIf) {
+            <div>
+                <p>
+                    Je suis visible car la condition est respectée : {{showIfTrueIf}}
+                </p>
+                <button (click)="showAndHideInvisibleThings2()">Cliques sur moi pour afficher le ELSE</button>
+            </div>
+        } @else {
+            <div>
+                <p>
+                    Je suis visible car la condition n'est PAS respectée : {{showIfTrueIf}}
+                </p>
+                <button (click)="showAndHideInvisibleThings2()">Cliques sur moi pour afficher le IF</button>
+            </div>
+        }
+
+        <p class="subtitle">
+            On affiche le contenu de notre tableau de string via une boucle *ngFor
+        </p>
+        <ul>
+            <li *ngFor="let things of arrayOfThings; let i = index">
+                {{i}} : {{things}}
+            </li>
+        </ul>
+
+        <p class="subtitle">
+            On affiche le contenu de notre tableau de string via une boucle for
+        </p>
+
+        <ul>
+            @for (things of arrayOfThings2; let i = $index; track things) {
+                <li>{{i}} : {{things}}</li>
+            } @empty {
+                <li>This array is currently empty, move on.</li>
+            }
+        </ul>
+
+        <p class="subtitle">
+            On utilise une directive personnalisée pour modifier le style d'un élément HTML spécifique
+            directement en interaction avec le DOM
+        </p>
+
+        <button changesBackground>Super directive, j'adoooooore la couleur. Merci ! </button>
+    </div>
+</div>
