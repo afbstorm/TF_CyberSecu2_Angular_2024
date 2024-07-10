@@ -20,6 +20,12 @@
         <app-enfant [num1]="num1" [num2]="num2" (calculeMoiCa)="calculationResult($event)"></app-enfant>
 
         <p>{{result}}</p>
+
+
+        <!-- On utilise le ng-content pour injecter du contenu du parent dans le composant enfant. Ou pour éviter de surcharger l'html du composant enfant -->
+        <app-enfant>
+            <p>Hello les CyberSecu2. Je suis le contenu du ng-content</p>
+        </app-enfant>
     </div>
 
 
