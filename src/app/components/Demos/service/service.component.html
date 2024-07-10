@@ -1,0 +1,13 @@
+<div class="container">
+    <h2>
+        {{title}}
+    </h2>
+
+    <div class="service-example">
+        <h4>{{message}}</h4>
+
+
+        <input type="text" [(ngModel)]="newMessage">
+        <button (click)="setNewMessage()">Mise à jour du message du service</button>
+    </div>
+</div>

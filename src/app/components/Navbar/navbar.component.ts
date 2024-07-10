@@ -34,6 +34,11 @@ export class NavbarComponent {
           title: 'Input-Output',
           url: '/demos/inout',
           isActive: false,
+        },
+        {
+          title: 'Services',
+          url: '/demos/service',
+          isActive: false,
         }
       ],
       isActive: true
@@ -45,6 +50,11 @@ export class NavbarComponent {
         {
           title: 'Chrono',
           url: '/exos/chrono',
+          isActive: false,
+        },
+        {
+          title: 'Panier V1',
+          url: '/exos/panierv1',
           isActive: false,
         }
       ],
