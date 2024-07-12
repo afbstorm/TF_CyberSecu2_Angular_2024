@@ -1,0 +1,69 @@
+<div class="container">
+    <h2>
+        {{title}}
+    </h2>
+
+    <div class="form-examples">
+        <p class="subtitle">
+            On récupère l'input via un formControl, au submit on console.log sa valeur
+        </p>
+
+        <form (submit)="onControlSubmit($event)">
+            <input type="text" [formControl]="control">
+            <button type="submit">Envoi la valeur du contrôle seul</button>
+        </form>
+
+        <!-- <p class="subtitle">
+            On récupère les inputs via un formGroup, au submit on console.log sa valeur
+        </p>
+
+        <form (submit)="onGroupSubmit($event)" [formGroup]="group">
+            <input type="text" formControlName="prenom">
+            <input type="text" formControlName="age">
+            <button type="submit">Envoi la valeur du group</button>
+        </form> -->
+
+        <p class="subtitle">
+            On récupère les inputs via un formArray, on en ajoute au besoin et 
+            au submit on console.log sa valeur
+        </p>
+
+        <form (submit)="onArraySubmit($event)" [formGroup]="array">
+            <button (click)="addControl()">Ajout d'un input</button>
+            <div formArrayName="array">
+                @for (control of getArrayForm().controls; track control; let i = $index) {
+                    <p>{{i}}</p>
+                    <input type="text" formControlName="{{i}}">
+                }
+                <button type="submit">Envoi de la valeur de l'array</button>
+            </div>
+        </form>
+
+        <p class="subtitle">
+            On valide les inputs au moment ou l'utilisateur intéragit avec. Via les Validators
+        </p>
+
+        <form (submit)="onGroupSubmit($event)" [formGroup]="group">
+            <input type="text" formControlName="prenom">
+            @if (!group.get('prenom')?.valid && !group.get('prenom')?.untouched) {
+                <p>Ce champ est obligatoire</p>
+            }
+            <input type="text" formControlName="age">
+            @if (!group.get('age')?.valid && !group.get('age')?.untouched) {
+                <p>Ce champ est obligatoire</p>
+            }
+            <input type="text" formControlName="tel">
+            @if (group.get('tel')?.errors) {
+                <p>{{group.get('tel')?.errors?.['tel']}}</p>
+            }
+
+            @if (group.get('prenom')?.valid && group.get('age')?.valid) {
+                <button type="submit" style="display: block;">Envoi la valeur du group</button>
+            } @else {
+                <button type="submit" style="display: none;">Envoi la valeur du group</button>
+            }
+        </form>
+
+
+    </div>
+</div>

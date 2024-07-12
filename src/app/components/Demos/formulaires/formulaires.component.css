@@ -1,0 +1,10 @@
+.form-examples {
+    h4 {
+        margin-top: 5rem;
+    }
+
+    .subtitle {
+        font-weight: bolder;
+        text-decoration: underline;
+    }
+}

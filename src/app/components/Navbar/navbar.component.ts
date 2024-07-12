@@ -39,6 +39,11 @@ export class NavbarComponent {
           title: 'Services',
           url: '/demos/service',
           isActive: false,
+        },
+        {
+          title: 'Formulaires',
+          url: '/demos/form',
+          isActive: false,
         }
       ],
       isActive: true
@@ -56,6 +61,11 @@ export class NavbarComponent {
           title: 'Panier V1',
           url: '/exos/panierv1',
           isActive: false,
+        },
+        {
+          title: 'Formulaire',
+          url: 'exos/formulaire',
+          isActive: false
         }
       ],
       isActive: true,

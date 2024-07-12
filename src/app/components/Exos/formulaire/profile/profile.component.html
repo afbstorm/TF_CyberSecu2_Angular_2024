@@ -1,0 +1,132 @@
+<section>
+    <form (submit)="submitProfileForm($event)" [formGroup]="profileInfos">
+        <input pInputText formControlName="lastname" placeholder="Lastname...">
+        <!-- Ajout de la vérification des erreurs de validations -->
+         @if (profileInfos.get('lastname')?.errors) {
+            @if (profileInfos.get('lastname')?.errors?.['required'] && !profileInfos.get('lastname')?.untouched) {
+                <span class="p-error error-font">*This field is required</span>
+            } @else if (profileInfos.get('lastname')?.errors?.['minlength']) {
+                <span class="p-error error-font">*This field requires at least 2 characters</span>
+            } @else if (profileInfos.get('lastname')?.errors?.['maxlength']) {
+                <span class="p-error error-font">*This field accepts 20 characters maximum</span>
+            }
+         }
+
+        <div formArrayName="firstname">
+            @for (control of getFirstnameArray().controls; let i = $index; track control) {
+                <input pInputText [formControlName]="i" placeholder="Firstname...">
+                <!-- Ajout de la vérification des erreurs de validations -->
+                @if (control?.errors) {
+                    @if (control.errors?.['required'] && control.touched) {
+                        <span class="p-error error-font">*This field is required</span>
+                    } @else if (control.errors?.['minlength']) {
+                        <span class="p-error error-font">*This field requires at least 3 characters</span>
+                    } @else if (control.errors?.['maxlength']) {
+                        <span class="p-error error-font">*This field accepts 20 characters maximum</span>
+                    }
+                 }
+                 <!-- Ajout d'un conditionnel d'affichage de bouton de suppression d'input si l'index != 0 -->
+                @if (i !== 0) {
+                    <p-button (onClick)="removeFirstname(i)" size="small" severity="danger">Remove this firstname</p-button>
+                }
+            }
+            <p-button (onClick)="addFirstname()" size="small" severity="help">Add more firstname</p-button>
+        </div>
+
+        <input pInputText formControlName="email" placeholder="Email...">
+        <!-- Ajout de la vérification des erreurs de validations -->
+        @if (profileInfos.get('email')?.errors) {
+            @if (profileInfos.get('email')?.errors?.['required'] && !profileInfos.get('email')?.untouched) {
+                <span class="p-error error-font">*This field is required</span>
+            } @else if (profileInfos.get('email')?.errors?.['email']) {
+                <span class="p-error error-font">*This is not a correct email format</span>
+            }
+         }
+
+        <input pInputText formControlName="pseudo" placeholder="Pseudo...">
+        <!-- Ajout de la vérification des erreurs de validations -->
+        @if (profileInfos.get('pseudo')?.errors) {
+            @if (profileInfos.get('pseudo')?.errors?.['required'] && !profileInfos.get('pseudo')?.untouched) {
+                <span class="p-error error-font">*This field is required</span>
+            } @else if (profileInfos.get('pseudo')?.errors?.['minlength']) {
+                <span class="p-error error-font">*This field requires at least 8 characters</span>
+            } @else if (profileInfos.get('pseudo')?.errors?.['maxlength']) {
+                <span class="p-error error-font">*This field accepts 20 characters maximum</span>
+            }
+         }
+
+        <input pInputText formControlName="jobTitle" placeholder="Job title...">
+        <!-- Ajout de la vérification des erreurs de validations -->
+        @if (profileInfos.get('jobTitle')?.errors) {
+            @if (profileInfos.get('jobTitle')?.errors?.['required'] && !profileInfos.get('jobTitle')?.untouched) {
+                <span class="p-error error-font">*This field is required</span>
+            } @else if (profileInfos.get('jobTitle')?.errors?.['minlength']) {
+                <span class="p-error error-font">*This field requires at least 3 characters</span>
+            } @else if (profileInfos.get('jobTitle')?.errors?.['maxlength']) {
+                <span class="p-error error-font">*This field accepts 50 characters maximum</span>
+            }
+         }
+
+        <textarea pInputTextarea formControlName="jobDescription" placeholder="Enter your job description, the more precise, the better..."></textarea>
+        <!-- Ajout de la vérification des erreurs de validations -->
+        @if (profileInfos.get('jobDescription')?.errors) {
+            @if (profileInfos.get('jobDescription')?.errors?.['required'] && !profileInfos.get('jobDescription')?.untouched) {
+                <span class="p-error error-font">*This field is required</span>
+            } @else if (profileInfos.get('jobDescription')?.errors?.['minlength']) {
+                <span class="p-error error-font">*This field requires at least 10 characters</span>
+            } @else if (profileInfos.get('jobDescription')?.errors?.['maxlength']) {
+                <span class="p-error error-font">*This field accepts 300 characters maximum</span>
+            }
+         }
+
+        <div formGroupName="address">
+            <input pInputText formControlName="street" placeholder="Street name...">
+            <!-- Ajout de la vérification des erreurs de validations -->
+            @if (profileInfos.get('address.street')?.errors) {
+                @if (profileInfos.get('address.street')?.errors?.['required'] && !profileInfos.get('address.street')?.untouched) {
+                    <span class="p-error error-font">*This field is required</span>
+                } @else if (profileInfos.get('address.street')?.errors?.['minlength']) {
+                    <span class="p-error error-font">*This field requires at least 3 characters</span>
+                } @else if (profileInfos.get('address.street')?.errors?.['maxlength']) {
+                    <span class="p-error error-font">*This field accepts 30 characters maximum</span>
+                }
+             }
+
+            <input pInputText formControlName="number" placeholder="House number...">
+            <!-- Ajout de la vérification des erreurs de validations -->
+            @if (profileInfos.get('address.number')?.errors) {
+                @if (profileInfos.get('address.number')?.errors?.['required'] && !profileInfos.get('address.number')?.untouched) {
+                    <span class="p-error error-font">*This field is required</span>
+                } @else if (profileInfos.get('address.number')?.errors?.['maxlength']) {
+                    <span class="p-error error-font">*This field accepts 3 characters maximum</span>
+                }
+             }
+
+            <input pInputText formControlName="city" placeholder="City name...">
+            <!-- Ajout de la vérification des erreurs de validations -->
+            @if (profileInfos.get('address.city')?.errors) {
+                @if (profileInfos.get('address.city')?.errors?.['required'] && !profileInfos.get('address.city')?.untouched) {
+                    <span class="p-error error-font">*This field is required</span>
+                } @else if (profileInfos.get('address.city')?.errors?.['minlength']) {
+                    <span class="p-error error-font">*This field requires at least 3 characters</span>
+                } @else if (profileInfos.get('address.city')?.errors?.['maxlength']) {
+                    <span class="p-error error-font">*This field accepts 30 characters maximum</span>
+                }
+             }
+
+            <input pInputText formControlName="pc" placeholder="Postal code...">
+            <!-- Ajout de la vérification des erreurs de validations -->
+            @if (profileInfos.get('address.pc')?.errors) {
+                @if (profileInfos.get('address.pc')?.errors?.['required'] && !profileInfos.get('address.pc')?.untouched) {
+                    <span class="p-error error-font">*This field is required</span>
+                } @else if (profileInfos.get('address.pc')?.errors?.['minlength']) {
+                    <span class="p-error error-font">*This field requires at least 4 characters</span>
+                } @else if (profileInfos.get('address.pc')?.errors?.['maxlength']) {
+                    <span class="p-error error-font">*This field accepts 4 characters maximum</span>
+                }
+             }
+        </div>
+
+        <p-button type="submit" severity="success">Save infos</p-button>
+    </form>
+</section>
